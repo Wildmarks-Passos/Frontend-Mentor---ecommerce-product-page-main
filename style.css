@@ -1,0 +1,285 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+@media (min-width: 320px){
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        text-decoration: none;
+        font-family: Kumbh Sans, sans-serif;
+    }
+    
+    .header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        padding: 23px;
+    }
+    #menu {
+        display: flex;
+        flex-direction: column;
+        padding-top: 95px;
+        padding-left: 25px;
+        gap: 30px;
+        position: absolute;
+        background: white;
+        width: 0vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        text-align: left;
+        transition: 600ms;
+        overflow: hidden;
+        font-weight: bold;
+        z-index: 1000;
+        visibility: hidden;
+    }
+
+    #menu a {
+        color: #1e1f23;
+    }
+
+    #showAndHideCart {
+        position: absolute;
+        background-color: white;
+        width: calc(100% - 16px);
+        height: 0px;
+        top: 75px;
+        border-radius: 10px;
+        overflow: hidden;
+        transition: 600ms;
+        visibility: hidden;
+        z-index: 999;
+    }
+
+    #showAndHideCart > div:first-child {
+        padding: 20px;
+        border-bottom: solid 1px #e8e8ea;
+        font-weight: bold;
+    }
+
+    #showAndHideCart.active {
+        height: 250px;
+        overflow: auto;
+        visibility: visible;
+    }
+
+    #quantInCart {
+        position: absolute;
+        font-size: 9px;
+        padding: 0.5px 5px;
+        border-radius: 50%;
+        color: white;
+        background-color: #ef8a3a;
+        top: -10%;
+        right: -10%;
+        visibility: hidden;
+
+    }
+
+    #quantInCart.active {
+        visibility: visible;
+    }
+
+    #cartContent {
+        display: flex;
+        height: calc(100% - 61px);
+        align-items: center;
+        justify-content: center;
+        color: #686d73;
+        font-weight: bold;
+
+    }
+
+    #menu.active {
+        width: 70vw;
+        visibility: visible;
+        overflow: auto;
+    }
+
+    #btnClose {
+        position: absolute;
+        top: 25px;
+        left: 25px;
+
+    }
+
+    #menuMobile {
+        display: flex;
+        flex-direction: column;
+        width: 20px;
+        border-bottom: 3px solid;
+        color: #6d7079;
+        gap: 3px;
+    }
+
+    #menuMobile:hover {
+        cursor: pointer;
+    }
+
+    #menuMobile::before, #menuMobile::after {
+        content: '';
+        width: 20px;
+        height: 3px;
+        background: currentColor;
+    }
+    
+    .menuAndLogo {
+        display: flex;
+        gap: 15px;
+        width: 50%;
+    }
+    
+    #logo {
+        width: 100px;
+    
+    }
+    
+    .iconCartAndAvatar {
+        display: flex;
+        justify-content: flex-end;
+        gap: 23px;
+        width: 50%;
+    }
+    
+    .iconCartAndAvatar img {
+        width: 22px;
+        cursor: pointer;
+    }
+
+    .iconCartAndAvatar > div:first-child {
+        position: relative;
+    }
+
+    .imgProductAndBtns {
+        position: relative;
+        width: 100%;
+    }
+
+    .selectedProductImage {
+        width: 100%;
+    }
+
+    .btnPreviousAndNext {
+        position: absolute;
+        background-color: white;
+        padding: 15px;
+        border-radius: 50%;
+    }
+
+    #btnPrevious {
+        bottom: calc(50% - 24px);
+        left: 15px;
+    }
+
+    #btnNext {
+        right: 15px;
+        bottom: calc(50% - 24px);
+    }
+
+    .productNamePriceAndInfo {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+    }
+
+    .sneakerCompanyTitle {
+        color: #ef8a3a;
+        font-weight: bold;
+    }
+
+    .productTitle {
+        width: 80%;
+    }
+
+    .productDescription {
+        color: #707175;
+        margin-bottom: 15px;
+    }
+
+    .productPrice {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 5px;
+    }
+
+    .productPrice div {
+        display: flex;
+        align-items: center;
+        gap: 17px;
+    }
+
+    #price {
+        font-size: 25px;
+        margin-right: 17px;
+    }
+
+    #discountPercentage {
+        background-color: #ffeddc;
+        padding: 3px 7px 3px 7px;
+        border-radius: 5px;
+        color: #ef8a3a;
+        font-weight: bold;
+    }
+
+    #oldPrice {
+        color: #bebec8;
+        text-decoration: line-through;
+    }
+
+    .quantityOfItems {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #f7f8fd;
+        width: 100%;
+        padding: 20px;
+        border-radius: 10px;
+        font-weight: bold;
+    }
+
+    .btnAddToCart {
+        width: 100%;
+        padding: 23px;
+        margin-bottom: 90px;
+        border-radius: 10px;
+        background-color: #ef8a3a;
+        border: none;
+        color: white;
+        font-weight: bold;
+        box-shadow: 0 30px 4em -20px #ef8a3a;
+    }
+
+    .btnAddToCart img {
+        margin-right: 15px;
+        width: 15px;
+    }
+}
+
+@media (min-width: 375px){
+    
+    #logo {
+        width: 140px;
+    
+    }
+
+    #menuMobile {
+        gap: 5px;
+    }
+    
+}
+
+@media (min-width: 768px){
+
+
+}

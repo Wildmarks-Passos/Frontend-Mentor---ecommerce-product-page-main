@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="./style.css">
+  <title>Frontend Mentor | E-commerce product page</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="menuAndLogo">
+      <div id="menuMobile"></div>
+      <nav id="menu">
+        <img id="btnClose" src="./assets/icon-close.svg" alt="icon-close">
+        <a href="#">Collections</a>
+        <a href="#">Men</a>
+        <a href="#">Women</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </nav>
+      <img id="logo" src="./assets/logo.svg" alt="logo">
+    </div>
+    <div id="showAndHideCart">
+      <div>Cart</div>
+      <div id="cartContent">Your cart is empty.</div>
+    </div>
+    <div class="iconCartAndAvatar">
+      <div>
+        <img id="iconCart" src="./assets/icon-cart.svg" alt="icon-cart">
+        <div id="quantInCart">1</div>
+      </div>
+      <img id="imageAvatar" src="./images/image-avatar.png" alt="image-avatar">
+    </div>
+  </header>
+  <main>
+    <section class="imgProductAndBtns">
+      <img id="btnPrevious" class="btnPreviousAndNext" src="./assets/icon-previous.svg" alt="icon-previous">
+      <img class="selectedProductImage" src="./images/image-product-1.jpg" alt="image-product-1">
+      <img id="btnNext" class="btnPreviousAndNext" src="./assets/icon-next.svg" alt="icon-next">
+    </section>
+    <section class="productNamePriceAndInfo">
+      <span class="sneakerCompanyTitle">SNEAKER COMPANY</span>
+      <h1 class="productTitle">Fall Limited Edition Sneakers</h1>
+      <p class="productDescription">
+        These low-profile sneakers are your perfect casual wear companion. Featuring a 
+        durable rubber outer sole, they’ll withstand everything the weather can offer.
+      </p>
+      <div class="productPrice">
+        <div>
+          <span id="price"><strong>$125.00</strong></span>
+          <span id="discountPercentage">50%</span>
+        </div>
+        <del id="oldPrice">$250.00</del>
+      </div>
+      <div class="quantityOfItems">
+        <img id="btnMinusProduct" src="./assets/icon-minus.svg" alt="icon-minus">
+        <span id="quantProducts">1</span>
+        <img id="btnPlusProduct" src="./assets/icon-plus.svg" alt="icon-plus">
+      </div>
+      <button id="btnAddToCart" class="btnAddToCart">
+        <img src="./assets/icon-cart-white.svg" alt="icon-cart"><span>Add to cart</span>
+      </button>
+    </section>
+  </main>  
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Wildmarks Passos</a>.
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>
