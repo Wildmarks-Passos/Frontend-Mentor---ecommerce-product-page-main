@@ -1,5 +1,7 @@
 
+var count = 0
 var cart = []
+var removeItem = []
 
 class Product{
     constructor( name, price, description, images, thumbnails ){
@@ -37,6 +39,8 @@ onload = function cartInfo(){
             productContentInCart.innerHTML = '<div id="msgEmptyCart">Your cart is empty.</div>'
             
             btnCheckout.classList.add('withoutProduct')
+
+            quantInCart.classList.remove('active')
         }else{
 
             productContentInCart.innerHTML = null
@@ -44,7 +48,7 @@ onload = function cartInfo(){
             btnCheckout.classList.remove('withoutProduct')
 
             cart.map( item => {
-
+                
                 productContentInCart.innerHTML += `<li>
                 <img src="${item.thumbnails[0]}" alt="${item.thumbnails[0].substr(9)}">
                 <div style="display: flex; flex-direction: column;">
@@ -53,7 +57,16 @@ onload = function cartInfo(){
                 </div>
                 <img class="removeItem" src="./assets/icon-delete.svg" alt="icon-delete">
               </li>`
+                
+                quantInCart.classList.add('active')
+
+                count += Number(item.quantProducts)
+                
             })
+
+            quantInCart.innerHTML = count
+
+            count = 0
         }
 
     }else{
@@ -67,6 +80,8 @@ onload = function cartInfo(){
         productContentInCart.innerHTML = '<div id="msgEmptyCart">Your cart is empty.</div>'
 
     }
+
+    removeItens()
 }
 
 // Funcionalidade para abrir e fechar menu e carrinho no dispositivo móvel
@@ -155,3 +170,26 @@ btnAddToCart.addEventListener('click', () => {
 
 
 // botão responsável em remover item do carrinho
+
+function removeItens(){
+
+    var remove = document.querySelectorAll('.removeItem')
+
+    remove.forEach( (item, index) => {
+
+        item.addEventListener( 'click', el => {
+
+            cart = JSON.parse(localStorage.getItem('cart'))
+
+            el.path[1].remove()
+
+            cart.splice(index, 1)
+
+            localStorage.setItem('cart', JSON.stringify(cart))
+
+            onload()
+            
+        })
+    })
+
+}

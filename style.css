@@ -7,7 +7,7 @@
     text-decoration: none;
 }
 
-@media (min-width: 320px){
+@media (min-width: 320px) and (max-width: 767px){
     * {
         margin: 0;
         padding: 0;
@@ -315,7 +315,7 @@
     }
 }
 
-@media (min-width: 375px){
+@media (min-width: 375px) and (max-width: 767px){
     
     #logo {
         width: 140px;
@@ -330,5 +330,166 @@
 
 @media (min-width: 768px){
 
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        text-decoration: none;
+        font-family: Kumbh Sans, sans-serif;
+    }
 
+    body {
+
+        max-width: 77.1%;
+        margin: auto;
+    }
+
+    .header {
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 30px 0;
+        border-bottom: 1px solid #e8e7ec;
+    }
+
+    #btnClose {
+
+        display: none;
+    }
+
+    #menuMobile {
+
+        display: none;
+    }
+
+    #showAndHideCart {
+
+        display: none;
+    }
+
+    .menuAndLogo {
+
+        display: flex;
+        justify-content: flex-start;
+        flex: 1;
+        gap: 50px;
+    }
+
+    #menu {
+
+        display: flex;
+        gap: 30px;
+        font-size: 14px;
+    }
+    
+    #menu a {
+        
+        color: #7a7b80;
+    }
+
+    .iconCartAndAvatar {
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 45px;
+    }
+
+    #iconCart {
+
+        width: 25px;
+    }
+
+    #imageAvatar {
+
+        width: 50px;
+    }
+
+    #main {
+
+        display: flex;
+        align-items: center;
+        gap: 120px;
+        padding: 90px 50px 120px 50px;
+
+    }
+
+    .imgProductAndBtns {
+
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    #btnPrevious, #btnNext {
+
+        display: none;
+    }
+
+    .selectedProductImage {
+
+        width: 100%;
+        border-radius: 15px;
+    }
+
+    .productNamePriceAndInfo {
+
+        width: 100%;
+    }
+
+    .sneakerCompanyTitle {
+
+        font-size: 14px;
+        color: #ffa864;
+        font-weight: bold;
+    }
+
+    .productTitle {
+
+        font-size: 35px;
+    }
+
+    .productDescription {
+
+        color: #7a7b80;
+    }
+
+    .productPrice div {
+
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    #price {
+
+        font-size: 25px;
+    }
+
+    #discountPercentage {
+        background-color: #ffeddc;
+        padding: 2px 7px 2px 7px;
+        border-radius: 5px;
+        color: #ef8a3a;
+        font-weight: bold;
+    }
+
+    #oldPrice {
+        color: #bebec8;
+        text-decoration: line-through;
+    }
+
+    .quantityOfItems {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #f7f8fd;
+        width: 100%;
+        padding: 20px;
+        border-radius: 10px;
+        font-weight: bold;
+    }
 }
