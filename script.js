@@ -105,31 +105,50 @@ iconCart.addEventListener('click', () => {
 
 // Carrossel de imagens
 
-var productImage = document.querySelectorAll('.selectedProductImage')
+var productImage = document.querySelector('.selectedProductImage')
+var allThumbImages = document.querySelectorAll('.thumbImages')
 var count = 0
 
-productImage.forEach( ( el ) => {
+productImage.src = product1.images[count]
 
-    el.src = product1.images[count]
-    btnNext.addEventListener('click', () => {
+btnNext.addEventListener('click', () => {
+    
+    if(count < product1.images.length - 1){
         
-        if(count < product1.images.length - 1){
-            
-            count += 1
-            el.src = product1.images[count]
-        }
+        count += 1
+        productImage.src = product1.images[count]
+    }
+})
 
-    })
+btnPrevious.addEventListener('click', () => {
 
-    btnPrevious.addEventListener('click', () => {
+    if(count > 0){
 
-        if(count > 0){
+        count -= 1
+        productImage.src = product1.images[count]
+    }
+})
 
-            count -= 1
-            el.src = product1.images[count]
-        }
+allThumbImages.forEach( ( thumb, index ) => {
+
+    thumb.addEventListener('click', () => {
+
+        allThumbImages.forEach( thumb => {
+
+            thumb.classList.remove('selected')
+        })
+
+        thumb.classList.add('selected')
+
+        productImage.src = product1.images[index]
+
+        count = index
+
+
     })
 })
+
+
 
 
 // Adiciona ou subtrai a quantidade do mesmo produto
@@ -193,3 +212,14 @@ function removeItens(){
     })
 
 }
+
+var selectedProductImage = document.querySelectorAll('.selectedProductImage')
+var lightBox = document.querySelector('.lightBox')
+
+selectedProductImage.forEach( img => {
+
+    img.addEventListener('click', () => {
+
+        lightBox.classList.add('active')
+    })
+})

@@ -142,6 +142,13 @@
         border: none;
         color: white;
         font-weight: bold;
+        transition: 300ms;
+    }
+
+    #btnCheckout:hover {
+
+        background-color: #ffac6a;
+        cursor: pointer;
     }
 
     #btnCheckout.withoutProduct {
@@ -468,6 +475,11 @@
         border-radius: 0;
     }
 
+    #productContentInCart img[src="./assets/icon-delete.svg"]:hover {
+
+        cursor: pointer;
+    }
+
     #btnCheckout {
         width: 100%;
         margin-top: 20px;
@@ -477,6 +489,13 @@
         border: none;
         color: white;
         font-weight: bold;
+        transition: 300ms;
+    }
+
+    #btnCheckout:hover {
+        
+        background-color: #ffac6a;
+        cursor: pointer;
     }
 
     #btnCheckout.withoutProduct {
@@ -663,6 +682,12 @@
         border: 2px solid #ef8a3a;
     }
 
+    .carouselProductImages div.selected::before {
+
+        cursor: pointer;
+        opacity: 0.6;
+    }
+
     .productNamePriceAndInfo {
 
         width: 100%;
@@ -737,11 +762,6 @@
         gap: 10px;
     }
 
-    #btnMinusProduct, #btnPlusProduct:hover {
-
-        /* cursor: pointer; */
-    }
-
     #btnMinusProduct:hover path, #btnPlusProduct:hover path{
 
         cursor: pointer;
@@ -777,4 +797,40 @@
         
         fill: white;
     }
+
+    .lightBox{
+
+        display: none;
+    }
+
+    .lightBox.active {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .lightBoxContent {
+
+        width: 30vw;
+    }
+
+    .lightBox .btnPreviousAndNext {
+
+        display: none;
+    }
+
+    .lightBox .selectedProductImage {
+
+        
+        width: 100%;
+    }
 }
+
+/* Terminar o lightbox do desktop */
