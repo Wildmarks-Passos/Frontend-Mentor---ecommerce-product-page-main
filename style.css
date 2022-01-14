@@ -351,6 +351,11 @@
         
         fill: white;
     }
+
+    .lightBox{
+
+        display: none;
+    }
 }
 
 @media (min-width: 375px) and (max-width: 767px){
@@ -636,6 +641,11 @@
         border-radius: 15px;
     }
 
+    .selectedProductImage:hover {
+
+        cursor: pointer;
+    }
+
     .carouselProductImages {
 
         display: grid;
@@ -804,33 +814,66 @@
     }
 
     .lightBox.active {
-        position: absolute;
+        position: fixed;
         display: flex;
         justify-content: center;
         align-items: center;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+        inset: 0;
+        width: 100vw;
+        height: 100vh;
         overflow: hidden;
         background-color: rgba(0, 0, 0, 0.6);
     }
 
     .lightBoxContent {
 
-        width: 30vw;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 35vw;
+    }
+
+    .lightBoxContent .carouselProductImages {
+
+        width: 80%;
     }
 
     .lightBox .btnPreviousAndNext {
 
-        display: none;
+        position: absolute;
+        background-color: white;
+        padding: 15px;
+        border-radius: 50%;
     }
 
-    .lightBox .selectedProductImage {
+    .btnPrevious {
 
-        
-        width: 100%;
+        left: -20px;
+        bottom: calc(50% + 15px);
+    }
+
+    .btnNext {
+
+        right: -20px;
+        bottom: calc(50% + 15px);
+    }
+
+    #btnCloseLightbox {
+
+        position: absolute;
+        margin-bottom: 10px;
+        right: 0;
+        top: -20px;
+    }
+
+    #btnCloseLightbox:hover {
+
+        cursor: pointer;
+    }
+
+    #btnCloseLightbox path {
+
+        fill: white;
     }
 }
-
-/* Terminar o lightbox do desktop */

@@ -105,18 +105,18 @@ iconCart.addEventListener('click', () => {
 
 // Carrossel de imagens
 
-var productImage = document.querySelector('.selectedProductImage')
+var productImage = document.querySelectorAll('.selectedProductImage')
 var allThumbImages = document.querySelectorAll('.thumbImages')
 var count = 0
 
-productImage.src = product1.images[count]
+productImage[0].src = product1.images[count]
 
 btnNext.addEventListener('click', () => {
     
     if(count < product1.images.length - 1){
         
         count += 1
-        productImage.src = product1.images[count]
+        productImage[0].src = product1.images[count]
     }
 })
 
@@ -125,7 +125,7 @@ btnPrevious.addEventListener('click', () => {
     if(count > 0){
 
         count -= 1
-        productImage.src = product1.images[count]
+        productImage[0].src = product1.images[count]
     }
 })
 
@@ -140,7 +140,14 @@ allThumbImages.forEach( ( thumb, index ) => {
 
         thumb.classList.add('selected')
 
-        productImage.src = product1.images[index]
+        if(index < 4){
+            
+            productImage[0].src = product1.images[index]
+        }else{
+
+            productImage[1].src = product1.images[index - product1.images.length]
+        }
+
 
         count = index
 
@@ -215,11 +222,42 @@ function removeItens(){
 
 var selectedProductImage = document.querySelectorAll('.selectedProductImage')
 var lightBox = document.querySelector('.lightBox')
+var body = document.querySelector('body')
 
 selectedProductImage.forEach( img => {
 
     img.addEventListener('click', () => {
 
         lightBox.classList.add('active')
+        
+        body.style.overflow = 'hidden'
     })
+})
+
+btnCloseLightbox.addEventListener('click', () => {
+
+    lightBox.classList.remove('active')
+
+    body.style.overflow = 'visible'
+})
+
+var btnPreviousLightbox = document.querySelector('.btnPrevious')
+var btnNextLightbox = document.querySelector('.btnNext')
+
+btnPreviousLightbox.addEventListener('click', () => {
+
+    if(count > 0){
+
+        count -= 1
+        productImage[1].src = product1.images[count]
+    }
+})
+
+btnNextLightbox.addEventListener('click', () => {
+
+    if(count < product1.images.length - 1){
+        
+        count += 1
+        productImage[1].src = product1.images[count]
+    }
 })
