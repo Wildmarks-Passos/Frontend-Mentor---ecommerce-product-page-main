@@ -25,7 +25,7 @@ var thumbnails = ['./images/image-product-1-thumbnail.jpg', './images/image-prod
 var product1 = new Product(name, price, description, images, thumbnails)
 
 
-// Recebe as informações do carrinho no localStorage
+// Get cart information from localStorage
 onload = function cartInfo(){
     
     if('cart' in localStorage){
@@ -84,7 +84,7 @@ onload = function cartInfo(){
     removeItens()
 }
 
-// Funcionalidade para abrir e fechar menu e carrinho no dispositivo móvel
+// Functionality to open and close menu and cart on mobile device
 menuMobile.addEventListener('click', () => {
 
     menu.classList.toggle('active')
@@ -103,7 +103,7 @@ iconCart.addEventListener('click', () => {
     showAndHideCart.classList.toggle('active')
 })
 
-// Carrossel de imagens
+// image carousel
 
 var productImage = document.querySelectorAll('.selectedProductImage')
 var allThumbImages = document.querySelectorAll('.thumbImages')
@@ -158,7 +158,7 @@ allThumbImages.forEach( ( thumb, index ) => {
 
 
 
-// Adiciona ou subtrai a quantidade do mesmo produto
+// Adds or subtracts the quantity of the same product
 
 btnMinusProduct.addEventListener('click', () => {
 
@@ -174,7 +174,7 @@ btnPlusProduct.addEventListener('click', () => {
 })
 
 
-// Botão responsável em adicionar o produto ao carrinho
+// Responsible button to add product to cart
 
 btnAddToCart.addEventListener('click', () => {
 
@@ -195,7 +195,7 @@ btnAddToCart.addEventListener('click', () => {
 })
 
 
-// botão responsável em remover item do carrinho
+// Button responsible for removing item from cart
 
 function removeItens(){
 
@@ -219,6 +219,9 @@ function removeItens(){
     })
 
 }
+
+
+// Display image lightbox
 
 var selectedProductImage = document.querySelectorAll('.selectedProductImage')
 var lightBox = document.querySelector('.lightBox')
