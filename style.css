@@ -386,6 +386,11 @@
         max-width: 77.1%;
         margin: auto;
     }
+    
+    body.overflowHidden{
+        
+        overflow: hidden;
+    }
 
     .header {
 
