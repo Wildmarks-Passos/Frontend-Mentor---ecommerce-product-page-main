@@ -28,6 +28,8 @@ var product1 = new Product(name, price, description, images, thumbnails)
 // Get cart information from localStorage
 onload = function cartInfo(){
     
+    count = 0
+    
     if('cart' in localStorage){
 
         cart = JSON.parse(localStorage.getItem('cart'))
@@ -233,7 +235,7 @@ selectedProductImage.forEach( img => {
 
         lightBox.classList.add('active')
         
-        body.style.overflow = 'hidden'
+        body.classList.add('overflowHidden')
     })
 })
 
@@ -241,7 +243,7 @@ btnCloseLightbox.addEventListener('click', () => {
 
     lightBox.classList.remove('active')
 
-    body.style.overflow = 'visible'
+    body.classList.remove('overflowHidden')
 })
 
 var btnPreviousLightbox = document.querySelector('.btnPrevious')
