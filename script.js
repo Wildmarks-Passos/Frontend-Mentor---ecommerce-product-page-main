@@ -109,7 +109,6 @@ iconCart.addEventListener('click', () => {
 
 var productImage = document.querySelectorAll('.selectedProductImage')
 var allThumbImages = document.querySelectorAll('.thumbImages')
-var count = 0
 
 productImage[0].src = product1.images[count]
 
@@ -142,16 +141,25 @@ allThumbImages.forEach( ( thumb, index ) => {
 
         thumb.classList.add('selected')
 
-        if(index < 4){
+        if(index < product1.images.length){
             
             productImage[0].src = product1.images[index]
+            productImage[1].src = product1.images[index]
+
+            count = index
+
+            allThumbImages[count + product1.images.length].classList.add('selected')
         }else{
 
+            productImage[0].src = product1.images[index - product1.images.length]
             productImage[1].src = product1.images[index - product1.images.length]
+
+            count = index - product1.images.length
+
+            allThumbImages[count].classList.add('selected')
         }
 
 
-        count = index
 
 
     })
@@ -233,6 +241,8 @@ selectedProductImage.forEach( img => {
 
     img.addEventListener('click', () => {
 
+        productImage[1].src = img.src
+
         lightBox.classList.add('active')
         
         body.classList.add('overflowHidden')
@@ -255,6 +265,14 @@ btnPreviousLightbox.addEventListener('click', () => {
 
         count -= 1
         productImage[1].src = product1.images[count]
+        productImage[0].src = product1.images[count]
+
+        allThumbImages[count + 1].classList.remove('selected')
+        allThumbImages[count + product1.images.length + 1].classList.remove('selected')
+
+        allThumbImages[count].classList.add('selected')
+        allThumbImages[count + product1.images.length].classList.add('selected')
+
     }
 })
 
@@ -264,5 +282,20 @@ btnNextLightbox.addEventListener('click', () => {
         
         count += 1
         productImage[1].src = product1.images[count]
+        productImage[0].src = product1.images[count]
+
+        allThumbImages[count - 1].classList.remove('selected')
+        allThumbImages[count + product1.images.length - 1].classList.remove('selected')
+
+        allThumbImages[count].classList.add('selected')
+        allThumbImages[count + product1.images.length].classList.add('selected')
+
     }
+})
+
+var carouselProductImages = document.querySelectorAll('.carouselProductImages')
+
+carouselProductImages.forEach( item => {
+
+    console.log(item)
 })
