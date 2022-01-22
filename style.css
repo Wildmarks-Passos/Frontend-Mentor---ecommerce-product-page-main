@@ -282,6 +282,7 @@
 
     #price {
         font-size: 25px;
+        font-weight: bold;
         margin-right: 17px;
     }
 
@@ -745,6 +746,7 @@
     #price {
 
         font-size: 25px;
+        font-weight: bold;
     }
 
     #discountPercentage {

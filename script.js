@@ -24,11 +24,43 @@ var thumbnails = ['./images/image-product-1-thumbnail.jpg', './images/image-prod
 
 var product1 = new Product(name, price, description, images, thumbnails)
 
+var carouselProductImages = document.querySelectorAll('.carouselProductImages')
+var productTitle = document.querySelector('.productTitle')
+var productDescription = document.querySelector('.productDescription')
+var productPrice = document.querySelector('#price')
 
 // Get cart information from localStorage
 onload = function cartInfo(){
     
     count = 0
+    // Loading product info
+    productTitle.innerHTML = product1.name
+    productDescription.innerHTML = product1.description
+    productPrice.innerHTML = '$' + product1.price
+    // Loading product images
+    product1.thumbnails.map( (thumb, index) => {
+
+        if(index == 0){
+            carouselProductImages.forEach( el => {
+
+                el.innerHTML += `
+                <div class="thumbImages selected">
+                    <img src="${thumb}" alt="${thumb.substr(9)}">
+                </div>`
+
+            })
+        }else {
+
+            carouselProductImages.forEach( el => {
+
+                el.innerHTML += `
+                <div class="thumbImages">
+                    <img src="${thumb}" alt="${thumb.substr(9)}">
+                </div>`
+
+            })
+        }
+    })
     
     if('cart' in localStorage){
 
@@ -83,6 +115,7 @@ onload = function cartInfo(){
 
     }
 
+    getThumbImages()
     removeItens()
 }
 
@@ -105,10 +138,9 @@ iconCart.addEventListener('click', () => {
     showAndHideCart.classList.toggle('active')
 })
 
-// image carousel
+// image carousel mobile
 
 var productImage = document.querySelectorAll('.selectedProductImage')
-var allThumbImages = document.querySelectorAll('.thumbImages')
 
 productImage[0].src = product1.images[count]
 
@@ -122,50 +154,13 @@ btnNext.addEventListener('click', () => {
 })
 
 btnPrevious.addEventListener('click', () => {
-
+    
     if(count > 0){
-
+        
         count -= 1
         productImage[0].src = product1.images[count]
     }
 })
-
-allThumbImages.forEach( ( thumb, index ) => {
-
-    thumb.addEventListener('click', () => {
-
-        allThumbImages.forEach( thumb => {
-
-            thumb.classList.remove('selected')
-        })
-
-        thumb.classList.add('selected')
-
-        if(index < product1.images.length){
-            
-            productImage[0].src = product1.images[index]
-            productImage[1].src = product1.images[index]
-
-            count = index
-
-            allThumbImages[count + product1.images.length].classList.add('selected')
-        }else{
-
-            productImage[0].src = product1.images[index - product1.images.length]
-            productImage[1].src = product1.images[index - product1.images.length]
-
-            count = index - product1.images.length
-
-            allThumbImages[count].classList.add('selected')
-        }
-
-
-
-
-    })
-})
-
-
 
 
 // Adds or subtracts the quantity of the same product
@@ -237,6 +232,79 @@ var selectedProductImage = document.querySelectorAll('.selectedProductImage')
 var lightBox = document.querySelector('.lightBox')
 var body = document.querySelector('body')
 
+function getThumbImages(){
+    
+    var allThumbImages = document.querySelectorAll('.thumbImages')
+    var btnPreviousLightbox = document.querySelector('.btnPrevious')
+    var btnNextLightbox = document.querySelector('.btnNext')
+    
+    allThumbImages.forEach( ( thumb, index ) => {
+    
+        thumb.addEventListener('click', () => {
+    
+            allThumbImages.forEach( thumb => {
+    
+                thumb.classList.remove('selected')
+            })
+    
+            thumb.classList.add('selected')
+    
+            if(index < product1.images.length){
+                
+                productImage[0].src = product1.images[index]
+                productImage[1].src = product1.images[index]
+    
+                count = index
+    
+                allThumbImages[count + product1.images.length].classList.add('selected')
+            }else{
+    
+                productImage[0].src = product1.images[index - product1.images.length]
+                productImage[1].src = product1.images[index - product1.images.length]
+    
+                count = index - product1.images.length
+    
+                allThumbImages[count].classList.add('selected')
+            }
+        })
+    })
+
+    btnPreviousLightbox.addEventListener('click', () => {
+
+        if(count > 0){
+    
+            count -= 1
+            productImage[1].src = product1.images[count]
+            productImage[0].src = product1.images[count]
+    
+            allThumbImages[count + 1].classList.remove('selected')
+            allThumbImages[count + product1.images.length + 1].classList.remove('selected')
+    
+            allThumbImages[count].classList.add('selected')
+            allThumbImages[count + product1.images.length].classList.add('selected')
+    
+        }
+    })
+
+    btnNextLightbox.addEventListener('click', () => {
+
+    if(count < product1.images.length - 1){
+        
+        count += 1
+        productImage[1].src = product1.images[count]
+        productImage[0].src = product1.images[count]
+
+        allThumbImages[count - 1].classList.remove('selected')
+        allThumbImages[count + product1.images.length - 1].classList.remove('selected')
+
+        allThumbImages[count].classList.add('selected')
+        allThumbImages[count + product1.images.length].classList.add('selected')
+
+    }
+})
+    
+}
+
 selectedProductImage.forEach( img => {
 
     img.addEventListener('click', () => {
@@ -254,48 +322,4 @@ btnCloseLightbox.addEventListener('click', () => {
     lightBox.classList.remove('active')
 
     body.classList.remove('overflowHidden')
-})
-
-var btnPreviousLightbox = document.querySelector('.btnPrevious')
-var btnNextLightbox = document.querySelector('.btnNext')
-
-btnPreviousLightbox.addEventListener('click', () => {
-
-    if(count > 0){
-
-        count -= 1
-        productImage[1].src = product1.images[count]
-        productImage[0].src = product1.images[count]
-
-        allThumbImages[count + 1].classList.remove('selected')
-        allThumbImages[count + product1.images.length + 1].classList.remove('selected')
-
-        allThumbImages[count].classList.add('selected')
-        allThumbImages[count + product1.images.length].classList.add('selected')
-
-    }
-})
-
-btnNextLightbox.addEventListener('click', () => {
-
-    if(count < product1.images.length - 1){
-        
-        count += 1
-        productImage[1].src = product1.images[count]
-        productImage[0].src = product1.images[count]
-
-        allThumbImages[count - 1].classList.remove('selected')
-        allThumbImages[count + product1.images.length - 1].classList.remove('selected')
-
-        allThumbImages[count].classList.add('selected')
-        allThumbImages[count + product1.images.length].classList.add('selected')
-
-    }
-})
-
-var carouselProductImages = document.querySelectorAll('.carouselProductImages')
-
-carouselProductImages.forEach( item => {
-
-    console.log(item)
 })
