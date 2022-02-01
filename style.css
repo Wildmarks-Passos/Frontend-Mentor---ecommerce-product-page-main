@@ -563,10 +563,10 @@
         
         content: '';
         width: 0%;
-        border: solid 2px orange;
+        border-top: solid 3.5px orange;
         border-radius: 5px;
         position: absolute;
-        bottom: -48px;
+        bottom: -47px;
         left: 0;
         visibility: hidden;
         transition: 300ms;

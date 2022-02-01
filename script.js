@@ -61,7 +61,13 @@ onload = function cartInfo(){
             })
         }
     })
-    
+
+    getCartInformation()
+    getThumbImages()
+}
+
+function getCartInformation(){
+
     if('cart' in localStorage){
 
         cart = JSON.parse(localStorage.getItem('cart'))
@@ -115,7 +121,6 @@ onload = function cartInfo(){
 
     }
 
-    getThumbImages()
     removeItens()
 }
 
@@ -196,7 +201,8 @@ btnAddToCart.addEventListener('click', () => {
 
     localStorage.setItem('cart', JSON.stringify(cart))
 
-    onload()
+    removeItens()
+    getCartInformation()
 })
 
 
@@ -218,7 +224,7 @@ function removeItens(){
 
             localStorage.setItem('cart', JSON.stringify(cart))
 
-            onload()
+            getCartInformation()
             
         })
     })
